@@ -10,7 +10,7 @@ export function readGeneData(filePath: string | undefined) : Promise<IPrefixesTr
   return new Promise<IPrefixesTree>((res)=> {
       const tree: IPrefixesTree = new PrefixesTree();
       const readStream = fs.createReadStream(filePath, { encoding: 'utf-8' });
-      let bufferStr = "";
+      let streamStr = "";
       let isFirst = true;
     
       readStream.on('error', (error: Error) => {
@@ -19,8 +19,8 @@ export function readGeneData(filePath: string | undefined) : Promise<IPrefixesTr
     
       readStream.on('data', (chunk: string) => {
         console.log(`chunk received: ${chunk}`);
-          bufferStr += chunk;
-          let genes = bufferStr.split(GENE_PREFIX);
+          streamStr += chunk;
+          let genes = streamStr.split(GENE_PREFIX);
     
           while (genes.length > 1) {
             if (isFirst) {
@@ -33,12 +33,12 @@ export function readGeneData(filePath: string | undefined) : Promise<IPrefixesTr
             genes.splice(0, 1);
           }
     
-          bufferStr = genes.join('');
+          streamStr = genes.join('');
       });
       
       readStream.on('end', (chunk: string) => {
         if (!isFirst) {
-          AddGene(bufferStr, tree.root!);
+          AddGene(streamStr, tree.root!);
         }
         console.log('end of file');
         res(tree);

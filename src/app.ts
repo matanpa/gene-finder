@@ -6,14 +6,14 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 let genes : IPrefixesTree;
 
 readGeneData(process.env.DATA_FILE_PATH)
   .then(res=> {
     genes = res;
     app.listen(port, () => {
-      return console.log(`Express is listening at http://localhost:${port}`);
+      return console.log(`Express is listening at http://localhost:${process.env.PORT}`);
     });
   }).catch(e => console.error(e));
 
