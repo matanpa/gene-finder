@@ -17,3 +17,4 @@ This is a playground exercise to find substrings within a long character sequenc
 * Writing prefixes-tree to DB instead of running in-memory
 * Splitting tree to partitions by prefixes and storing each separately
 * Using map-reduce to process different portions of the data in a distributed manner
+* Edge-cases: coinciding prefixes

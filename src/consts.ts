@@ -1,1 +1,1 @@
-export const GENE_PREFIX = 'AAA';
+export const GENE_PREFIX = 'AAAAAAAAAAA';
