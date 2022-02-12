@@ -1,11 +1,11 @@
 {
-  "name": "bring-gene-finder",
+  "name": "gene-finder",
   "version": "1.0.0",
-  "description": "bringg home assignment",
+  "description": "find substrings in sequence",
   "main": "src/app.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/npm/cli.git"
+    "url": "https://github.com/matanpa/gene-finder.git"
   },
   "scripts": {
     "start": "ts-node-dev ./src/app.ts --respawn --transpileOnly",
